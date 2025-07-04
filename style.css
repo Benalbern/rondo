@@ -1,0 +1,696 @@
+/* General Styles */
+:root {
+    --dark-indigo: #1a1a2e;
+    --darker-indigo: #16213e;
+    --dark-sapphire: #0f3460;
+    --amethyst: #533483;
+    --light-gray: #e0e0e0;
+    --medium-gray: #a0a0a0;
+    --crimson: #e94560;
+    --gradient-bg: linear-gradient(135deg, var(--dark-indigo) 0%, var(--darker-indigo) 100%);
+    --gradient-accent: linear-gradient(45deg, var(--dark-sapphire), var(--amethyst));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* SANGAT PENTING: Pastikan ini selalu ada */
+}
+
+/* Kunci utama untuk mencegah horizontal scrollbar di seluruh halaman */
+html, body {
+    width: 100%; /* Pastikan elemen root mengambil 100% lebar viewport */
+    overflow-x: hidden; /* Ini akan memotong konten yang melebihi lebar secara horizontal */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--gradient-bg);
+    color: var(--light-gray);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h1 { font-size: 3.5em; }
+h2 { font-size: 2.5em; text-align: center; margin-bottom: 40px; }
+h3 { font-size: 1.8em; }
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+a {
+    color: var(--crimson);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--light-gray);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--crimson);
+    color: var(--light-gray);
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: transform 0.3s ease, background 0.3s ease;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    background: #c73752; /* Slightly darker crimson */
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    display: inline-block;
+    border: 2px solid var(--crimson);
+    color: var(--crimson);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--crimson);
+    color: var(--light-gray);
+    transform: translateY(-3px);
+}
+
+.section {
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Tambahkan ini sebagai pengaman untuk setiap section */
+}
+
+.section:nth-of-type(even) {
+    background-color: var(--darker-indigo);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* Header / Hero Section */
+.hero-section {
+    background: var(--gradient-bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Pastikan overflow pada hero-section juga hidden */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, var(--dark-sapphire) 0%, transparent 40%),
+                radial-gradient(circle at bottom right, var(--amethyst) 0%, transparent 40%);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Pastikan width 100% */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(26, 26, 46, 0.7); /* Semi-transparent background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+nav.scrolled {
+    background: var(--dark-indigo);
+    padding: 15px 40px;
+}
+
+.logo {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    font-size: 1.8em;
+    color: var(--crimson);
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--light-gray);
+    font-weight: 600;
+    font-size: 1.1em;
+    position: relative;
+    padding: 8px 12px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    border-color: var(--crimson);
+    color: var(--crimson);
+}
+
+
+.hero-content {
+    padding-top: 100px;
+    z-index: 10;
+}
+
+.hero-content h1 {
+    color: var(--light-gray);
+    font-size: 4.5em;
+    margin-bottom: 10px;
+    background: -webkit-linear-gradient(45deg, var(--light-gray), var(--crimson));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content h2 {
+    color: var(--medium-gray);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    color: var(--medium-gray);
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* Section Headings */
+.about-section h2, .skills-section h2, .portfolio-section h2, .contact-section h2 {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.about-section h2::after, .skills-section h2::after, .portfolio-section h2::after, .contact-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--crimson);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 60px;
+    align-items: center;
+    text-align: left;
+}
+
+.about-text {
+    line-height: 1.8;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: block;
+    margin: 0 auto;
+    border: 3px solid var(--crimson);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    text-align: left;
+}
+
+.skill-category {
+    background-color: var(--dark-indigo);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    border-top: 3px solid var(--crimson);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+
+.skill-category h3 {
+    color: var(--crimson);
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category ul li {
+    background: var(--darker-indigo);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+
+.skill-category ul li::before {
+    content: '\f00c'; /* Font Awesome check icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--crimson);
+    margin-right: 10px;
+}
+
+/* Portfolio Section */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.portfolio-item {
+    background: var(--dark-indigo);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 3px solid var(--crimson);
+}
+
+.portfolio-info {
+    padding: 20px;
+}
+
+.portfolio-info h3 {
+    color: var(--light-gray);
+    margin-bottom: 10px;
+}
+
+.portfolio-info p {
+    color: var(--medium-gray);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.portfolio-tags {
+    margin-top: 10px;
+}
+
+.portfolio-tags span {
+    display: inline-block;
+    background: var(--darker-indigo);
+    color: var(--medium-gray);
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.portfolio-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.portfolio-links a {
+    color: var(--crimson);
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.portfolio-links a:hover {
+    color: var(--light-gray);
+}
+
+.portfolio-more-btn-container {
+    text-align: center;
+    margin-top: 60px; /* Space above the button */
+}
+
+
+/* Contact Section - New Layout */
+.contact-info-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 40px; /* Spacing between contact items */
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--dark-indigo); /* Background for the whole line */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    border-top: 3px solid var(--crimson);
+}
+
+.contact-detail {
+    display: flex;
+    align-items: center;
+    color: var(--light-gray);
+    font-size: 1.1em;
+    white-space: nowrap; /* Prevent wrapping for individual details */
+    transition: color 0.3s ease;
+}
+
+.contact-detail:hover {
+    color: var(--crimson);
+}
+
+.contact-detail i {
+    font-size: 1.6em;
+    color: var(--crimson);
+    margin-right: 15px;
+}
+
+.contact-detail a {
+    font-weight: 600;
+    color: inherit; /* Inherit color from parent (.contact-detail) */
+}
+
+.contact-detail a:hover {
+    text-decoration: underline;
+    color: var(--light-gray); /* Ensure hover works for link */
+}
+
+.social-links {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.social-links a {
+    color: var(--light-gray);
+    font-size: 2.2em; /* Slightly larger for impact */
+    margin: 0 18px; /* More spacing */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--crimson);
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    background: var(--dark-indigo);
+    color: var(--medium-gray);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+    border-top: 1px solid var(--darker-indigo);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    /* Umum */
+    .container {
+        padding: 0 15px;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    p {
+        font-size: 1em;
+    }
+
+    /* Navbar */
+    nav {
+        padding: 15px 25px;
+    }
+    nav ul li {
+        margin-left: 20px;
+    }
+    nav ul li a {
+        font-size: 1em;
+        padding: 6px 10px;
+    }
+
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+        max-width: 80%;
+    }
+
+    /* About Section */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .about-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+    .about-image img {
+        margin: 0 auto;
+        max-width: 250px;
+    }
+
+    /* Skills Section, Portfolio Section */
+    .skills-grid, .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    .skill-category, .portfolio-item {
+        margin-bottom: 20px;
+    }
+    .skill-category h3 {
+        font-size: 1.4em;
+    }
+    .skill-category ul li {
+        font-size: 0.9em;
+    }
+    .portfolio-info h3 {
+        font-size: 1.6em;
+    }
+    .portfolio-info p {
+        font-size: 0.85em;
+    }
+    .portfolio-tags span {
+        font-size: 0.75em;
+    }
+    .portfolio-links a {
+        font-size: 1em;
+    }
+
+    /* Contact Section */
+    .contact-info-line {
+        flex-direction: column;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+    .contact-detail {
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        font-size: 1em;
+    }
+    .contact-detail i {
+        font-size: 1.4em;
+        margin-right: 10px;
+    }
+    .social-links {
+        margin-top: 40px;
+    }
+    .social-links a {
+        font-size: 2em;
+        margin: 0 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Umum */
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2em; }
+    .section { padding: 60px 0; }
+
+    /* Navbar */
+    nav ul {
+        display: none;
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .hero-section {
+        padding-top: 80px;
+    }
+
+    /* Hero Content */
+    .hero-content h1 {
+        font-size: 3em;
+    }
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+    .hero-content p {
+        font-size: 0.95em;
+        max-width: 90%;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    /* About Section */
+    .about-image img {
+        max-width: 200px;
+    }
+
+    /* Skills, Portfolio */
+    .skills-grid, .portfolio-grid {
+        gap: 20px;
+    }
+    .skill-category, .portfolio-item {
+        padding: 20px;
+    }
+    .portfolio-item img {
+        height: 180px;
+    }
+
+    /* Contact */
+    .contact-info-line {
+        padding: 20px;
+    }
+    .social-links a {
+        font-size: 1.8em;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Umum */
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.6em; }
+    p { font-size: 0.9em; }
+    .section { padding: 40px 0; }
+
+    /* Navbar */
+    nav {
+        padding: 10px 15px;
+    }
+    .logo {
+        font-size: 1.2em;
+    }
+
+    /* Hero Content */
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content h2 {
+        font-size: 1.2em;
+    }
+    .hero-content p {
+        font-size: 0.85em;
+        max-width: 95%;
+    }
+    .btn {
+        padding: 8px 18px;
+        font-size: 0.8em;
+    }
+
+    /* About, Skills, Portfolio */
+    .about-text {
+        font-size: 0.95em;
+    }
+    .skill-category h3 {
+        font-size: 1.2em;
+    }
+    .skill-category ul li {
+        font-size: 0.85em;
+    }
+    .portfolio-info h3 {
+        font-size: 1.4em;
+    }
+    .portfolio-info p {
+        font-size: 0.8em;
+    }
+    .portfolio-tags span {
+        font-size: 0.7em;
+        padding: 4px 8px;
+    }
+    .portfolio-links a {
+        font-size: 0.9em;
+        gap: 3px;
+    }
+    .portfolio-item img {
+        height: 150px;
+    }
+}

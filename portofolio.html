@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Anda | Semua Karya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styleportofolio.css">
+</head>
+<body>
+    <header class="header-all-projects">
+        <div class="container">
+            <div class="back-to-home">
+                <!-- Diubah menjadi button-like link -->
+                <a href="index.html" class="btn-back-to-home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            </div>
+            <h1>Semua Karya</h1>
+            <p style="color: var(--medium-gray);">Jelajahi seluruh koleksi proyek pengembangan web, desain UI/UX, dan karya lainnya.</p>
+        </div>
+    </header>
+
+    <section class="all-projects-section">
+        <div class="container">
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="website">Website</button>
+                <button class="filter-btn" data-category="ui-ux">UI/UX</button>
+                <button class="filter-btn" data-category="graphic-design">Graphic Design</button>
+                <button class="filter-btn" data-category="game">Game</button>
+                <button class="filter-btn" data-category="app">App</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <p class="loading-message" style="text-align: center; color: var(--medium-gray);">Memuat proyek...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year-all-projects"></span> Nama Anda. Semua Hak Cipta Dilindungi.</p>
+            <p>Dibuat dengan <i class="fas fa-heart" style="color: var(--crimson);"></i> dan semangat.</p>
+        </div>
+    </footer>
+    
+    <script src="scriptportofolio.js"></script>
+</body>
+</html>
